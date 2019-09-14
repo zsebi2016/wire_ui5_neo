@@ -1,0 +1,107 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:sap="http://www.sap.com/Protocols/SAPData"
+	xmlns:ux="http://www.sap.com/Protocols/OData4SAP/UX" xmlns:gp="http://www.sap.com/Protocols/SAPData/GenericPlayer" Version="1.0">
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml"><edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/></edmx:Reference>
+	<edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ExpertService">
+			<EntityType Name="Expert">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.Int32" Nullable="false"/><Property Name="REPORTS_TO" Type="Edm.Int32"/><Property Name="SKILL_SET" Type="Edm.String"/><Property Name="EXT_ID" Type="Edm.String" MaxLength="100"/><Property Name="NAME" Type="Edm.String" MaxLength="100"/></EntityType>
+			<EntityType Name="ExpertExtra">
+				<Key><PropertyRef Name="X_KEY"/></Key><Property Name="X_KEY" Type="Edm.String" Nullable="false"/><Property Name="NAME" Type="Edm.String"/><Property Name="ID" Type="Edm.Int32"/><Property Name="TEAM_ID" Type="Edm.Int32"/><Property Name="REPORTS_TO" Type="Edm.Int32"/><Property Name="SKILL_SET" Type="Edm.String"/><Property Name="EXT_ID" Type="Edm.String"/></EntityType>
+			<EntityType Name="Expert_team">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.Int32" Nullable="false"/><Property Name="TEAM_NAME" Type="Edm.String" MaxLength="200"/><Property Name="DESCRIPTION" Type="Edm.String"/><Property Name="TEAM_LEAD" Type="Edm.Int32"/><Property Name="PARENT_TEAM" Type="Edm.Int32"/><NavigationProperty Name="EXPERTS" Relationship="ExpertService.Expert_team_EXPERTS" FromRole="Expert_team" ToRole="ExpertExtra"/></EntityType>
+			<EntityType Name="Team_member">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.Int32" Nullable="false"/><Property Name="EXPERT_ID" Type="Edm.Int32"/><Property Name="TEAM_ID" Type="Edm.Int32"/><NavigationProperty Name="EXPERT" Relationship="ExpertService.Team_member_EXPERT" FromRole="Team_member" ToRole="Expert"/><NavigationProperty Name="TEAM" Relationship="ExpertService.Team_member_TEAM" FromRole="Team_member" ToRole="Expert_team"/></EntityType>
+			<EntityType Name="Test2">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.Int32" Nullable="false"/><Property Name="TEAM_NAME" Type="Edm.String"/></EntityType>
+			<EntityType Name="V_Team">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.Int32" Nullable="false"/><Property Name="TEAM_NAME" Type="Edm.String"/><Property Name="DESCRIPTION" Type="Edm.String"/><Property Name="TEAM_LEAD" Type="Edm.Int32"/><Property Name="PARENT_TEAM" Type="Edm.Int32"/><NavigationProperty Name="EXPERTS" Relationship="ExpertService.V_Team_EXPERTS" FromRole="V_Team" ToRole="ExpertExtra"/></EntityType>
+			<Association Name="Expert_team_EXPERTS"><End Type="ExpertService.Expert_team" Multiplicity="*" Role="Expert_team"/><End Type="ExpertService.ExpertExtra" Multiplicity="*" Role="ExpertExtra"/></Association>
+			<Association Name="Team_member_EXPERT"><End Type="ExpertService.Team_member" Multiplicity="*" Role="Team_member"/><End Type="ExpertService.Expert" Multiplicity="0..1" Role="Expert"/>
+				<ReferentialConstraint>
+					<Principal Role="Expert"><PropertyRef Name="ID"/></Principal>
+					<Dependent Role="Team_member"><PropertyRef Name="EXPERT_ID"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="Team_member_TEAM"><End Type="ExpertService.Team_member" Multiplicity="*" Role="Team_member"/><End Type="ExpertService.Expert_team" Multiplicity="0..1" Role="Expert_team"/>
+				<ReferentialConstraint>
+					<Principal Role="Expert_team"><PropertyRef Name="ID"/></Principal>
+					<Dependent Role="Team_member"><PropertyRef Name="TEAM_ID"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="V_Team_EXPERTS"><End Type="ExpertService.V_Team" Multiplicity="*" Role="V_Team"/><End Type="ExpertService.ExpertExtra" Multiplicity="*" Role="ExpertExtra"/></Association>
+			<EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true"><EntitySet Name="Expert" EntityType="ExpertService.Expert"/><EntitySet Name="ExpertExtra" EntityType="ExpertService.ExpertExtra"/><EntitySet Name="Expert_team" EntityType="ExpertService.Expert_team"/><EntitySet Name="Team_member" EntityType="ExpertService.Team_member"/><EntitySet Name="Test2" EntityType="ExpertService.Test2"/><EntitySet Name="V_Team" EntityType="ExpertService.V_Team"/>
+				<AssociationSet Name="Expert_team_EXPERTS" Association="ExpertService.Expert_team_EXPERTS"><End EntitySet="Expert_team" Role="Expert_team"/><End EntitySet="ExpertExtra" Role="ExpertExtra"/></AssociationSet>
+				<AssociationSet Name="Team_member_EXPERT" Association="ExpertService.Team_member_EXPERT"><End EntitySet="Team_member" Role="Team_member"/><End EntitySet="Expert" Role="Expert"/></AssociationSet>
+				<AssociationSet Name="Team_member_TEAM" Association="ExpertService.Team_member_TEAM"><End EntitySet="Team_member" Role="Team_member"/><End EntitySet="Expert_team" Role="Expert_team"/></AssociationSet>
+				<AssociationSet Name="V_Team_EXPERTS" Association="ExpertService.V_Team_EXPERTS"><End EntitySet="V_Team" Role="V_Team"/><End EntitySet="ExpertExtra" Role="ExpertExtra"/></AssociationSet>
+			</EntityContainer>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ExpertService.EntityContainer/Expert">
+				<Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Capabilities.DeleteRestrictions">
+					<Record xmlns="http://docs.oasis-open.org/odata/ns/edm" Type="Capabilities.DeleteRestrictionsType"><PropertyValue xmlns="http://docs.oasis-open.org/odata/ns/edm" Property="Deletable" Bool="false"/></Record>
+				</Annotation>
+				<Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Capabilities.InsertRestrictions">
+					<Record xmlns="http://docs.oasis-open.org/odata/ns/edm" Type="Capabilities.InsertRestrictionsType"><PropertyValue xmlns="http://docs.oasis-open.org/odata/ns/edm" Property="Insertable" Bool="false"/></Record>
+				</Annotation>
+				<Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Capabilities.UpdateRestrictions">
+					<Record xmlns="http://docs.oasis-open.org/odata/ns/edm" Type="Capabilities.UpdateRestrictionsType"><PropertyValue xmlns="http://docs.oasis-open.org/odata/ns/edm" Property="Updatable" Bool="false"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ExpertService.EntityContainer/ExpertExtra">
+				<Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Capabilities.DeleteRestrictions">
+					<Record xmlns="http://docs.oasis-open.org/odata/ns/edm" Type="Capabilities.DeleteRestrictionsType"><PropertyValue xmlns="http://docs.oasis-open.org/odata/ns/edm" Property="Deletable" Bool="false"/></Record>
+				</Annotation>
+				<Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Capabilities.InsertRestrictions">
+					<Record xmlns="http://docs.oasis-open.org/odata/ns/edm" Type="Capabilities.InsertRestrictionsType"><PropertyValue xmlns="http://docs.oasis-open.org/odata/ns/edm" Property="Insertable" Bool="false"/></Record>
+				</Annotation>
+				<Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Capabilities.UpdateRestrictions">
+					<Record xmlns="http://docs.oasis-open.org/odata/ns/edm" Type="Capabilities.UpdateRestrictionsType"><PropertyValue xmlns="http://docs.oasis-open.org/odata/ns/edm" Property="Updatable" Bool="false"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ExpertService.EntityContainer/Expert_team">
+				<Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Capabilities.DeleteRestrictions">
+					<Record xmlns="http://docs.oasis-open.org/odata/ns/edm" Type="Capabilities.DeleteRestrictionsType"><PropertyValue xmlns="http://docs.oasis-open.org/odata/ns/edm" Property="Deletable" Bool="false"/></Record>
+				</Annotation>
+				<Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Capabilities.InsertRestrictions">
+					<Record xmlns="http://docs.oasis-open.org/odata/ns/edm" Type="Capabilities.InsertRestrictionsType"><PropertyValue xmlns="http://docs.oasis-open.org/odata/ns/edm" Property="Insertable" Bool="false"/></Record>
+				</Annotation>
+				<Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Capabilities.UpdateRestrictions">
+					<Record xmlns="http://docs.oasis-open.org/odata/ns/edm" Type="Capabilities.UpdateRestrictionsType"><PropertyValue xmlns="http://docs.oasis-open.org/odata/ns/edm" Property="Updatable" Bool="false"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ExpertService.EntityContainer/Team_member">
+				<Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Capabilities.DeleteRestrictions">
+					<Record xmlns="http://docs.oasis-open.org/odata/ns/edm" Type="Capabilities.DeleteRestrictionsType"><PropertyValue xmlns="http://docs.oasis-open.org/odata/ns/edm" Property="Deletable" Bool="false"/></Record>
+				</Annotation>
+				<Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Capabilities.InsertRestrictions">
+					<Record xmlns="http://docs.oasis-open.org/odata/ns/edm" Type="Capabilities.InsertRestrictionsType"><PropertyValue xmlns="http://docs.oasis-open.org/odata/ns/edm" Property="Insertable" Bool="false"/></Record>
+				</Annotation>
+				<Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Capabilities.UpdateRestrictions">
+					<Record xmlns="http://docs.oasis-open.org/odata/ns/edm" Type="Capabilities.UpdateRestrictionsType"><PropertyValue xmlns="http://docs.oasis-open.org/odata/ns/edm" Property="Updatable" Bool="false"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ExpertService.EntityContainer/Test2">
+				<Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Capabilities.DeleteRestrictions">
+					<Record xmlns="http://docs.oasis-open.org/odata/ns/edm" Type="Capabilities.DeleteRestrictionsType"><PropertyValue xmlns="http://docs.oasis-open.org/odata/ns/edm" Property="Deletable" Bool="false"/></Record>
+				</Annotation>
+				<Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Capabilities.InsertRestrictions">
+					<Record xmlns="http://docs.oasis-open.org/odata/ns/edm" Type="Capabilities.InsertRestrictionsType"><PropertyValue xmlns="http://docs.oasis-open.org/odata/ns/edm" Property="Insertable" Bool="false"/></Record>
+				</Annotation>
+				<Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Capabilities.UpdateRestrictions">
+					<Record xmlns="http://docs.oasis-open.org/odata/ns/edm" Type="Capabilities.UpdateRestrictionsType"><PropertyValue xmlns="http://docs.oasis-open.org/odata/ns/edm" Property="Updatable" Bool="false"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ExpertService.EntityContainer/V_Team">
+				<Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Capabilities.DeleteRestrictions">
+					<Record xmlns="http://docs.oasis-open.org/odata/ns/edm" Type="Capabilities.DeleteRestrictionsType"><PropertyValue xmlns="http://docs.oasis-open.org/odata/ns/edm" Property="Deletable" Bool="false"/></Record>
+				</Annotation>
+				<Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Capabilities.InsertRestrictions">
+					<Record xmlns="http://docs.oasis-open.org/odata/ns/edm" Type="Capabilities.InsertRestrictionsType"><PropertyValue xmlns="http://docs.oasis-open.org/odata/ns/edm" Property="Insertable" Bool="false"/></Record>
+				</Annotation>
+				<Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Capabilities.UpdateRestrictions">
+					<Record xmlns="http://docs.oasis-open.org/odata/ns/edm" Type="Capabilities.UpdateRestrictionsType"><PropertyValue xmlns="http://docs.oasis-open.org/odata/ns/edm" Property="Updatable" Bool="false"/></Record>
+				</Annotation>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

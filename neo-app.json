@@ -36,6 +36,14 @@
         "entryPath": "/test-resources"
       },
       "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/Wire_Service_Team138",
+      "target": {
+        "type": "destination",
+        "name": "Wire_Service_Team138"
+      },
+      "description": "ODATA services for Wire (Team 138)"
     }
   ],
   "sendWelcomeFileRedirect": true
