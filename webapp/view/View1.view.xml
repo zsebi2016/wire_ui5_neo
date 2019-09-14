@@ -3,7 +3,11 @@
 		<App id="app">
 			<pages>
 				<Page id="page" title="{i18n>title}">
-					<content></content>
+					<content>
+						<List items="{/V_Team}">
+							<StandardListItem type="Active" press="handleListItemPress" title="{TEAM_NAME}"/>
+						</List>
+					</content>
 				</Page>
 			</pages>
 		</App>
