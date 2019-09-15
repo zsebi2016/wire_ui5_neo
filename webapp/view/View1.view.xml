@@ -5,7 +5,16 @@
 				<Page id="page" title="{i18n>title}">
 					<content>
 						<List items="{/V_Team}">
-							<StandardListItem type="Navigation" press="handleListItemPress" title="{TEAM_NAME}"/>
+							<!--StandardListItem type="Navigation" press="handleListItemPress" title="{TEAM_NAME}"/-->
+							<ObjectListItem type="Navigation" press="handleListItemPress" title="{TEAM_NAME}" number="{PARENT_TEAM}">
+								<attributes>
+									<ObjectAttribute text="{DESCRIPTION}"/>
+									<ObjectAttribute text="{TEAM_LEAD}"/>
+								</attributes>
+								<!--firstStatus>
+									<ObjectStatus text="{= ${Discontinued}? 'Discontinued' : 'Available' }" state="{= ${Discontinued}? 'Error' : 'Success' }"/>
+								</firstStatus-->
+							</ObjectListItem>
 						</List>
 					</content>
 				</Page>
