@@ -96,6 +96,12 @@
 				"name": "",
 				"pattern": "",
 				"target": ["TargetView1"]
+			}, {
+				"name": "Detail",
+				"pattern": "detail/{teamId}",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["Detail"]
 			}],
 			"targets": {
 				"TargetView1": {
@@ -109,6 +115,11 @@
 				"App": {
 					"viewType": "XML",
 					"viewName": "App"
+				},
+				"Detail": {
+					"viewType": "XML",
+					"viewName": "Detail",
+					"viewLevel": 2
 				}
 			}
 		}

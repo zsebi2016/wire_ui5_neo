@@ -5,7 +5,7 @@
 				<Page id="page" title="{i18n>title}">
 					<content>
 						<List items="{/V_Team}">
-							<StandardListItem type="Active" press="handleListItemPress" title="{TEAM_NAME}"/>
+							<StandardListItem type="Navigation" press="handleListItemPress" title="{TEAM_NAME}"/>
 						</List>
 					</content>
 				</Page>

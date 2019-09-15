@@ -1,0 +1,12 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="sapneo.my.wire.wire_ui5_neo.controller.Detail"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{i18n>DetailTitle}" showNavButton="true" navButtonPress="handleNavButtonPress">
+		<VBox>
+			<!--Text text="Team Details: "/-->
+			<Text text="{TEAM_NAME}"/>
+			<Text text="{TEAM_LEAD}"/>
+			<Text text="{PARENT_TEAM}"/>
+			<Text text="{DESCRIPTION}"/>
+		</VBox>
+	</Page>
+</mvc:View>
