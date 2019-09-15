@@ -3,8 +3,15 @@
 		<App id="app">
 			<pages>
 				<Page id="page" title="{i18n>title}">
+					<subHeader>
+						<Bar>
+							<contentLeft>
+								<SearchField search="handleSearch"/>
+							</contentLeft>
+						</Bar>
+					</subHeader>
 					<content>
-						<List items="{/V_Team}">
+						<List id="List" items="{/V_Team}">
 							<!--StandardListItem type="Navigation" press="handleListItemPress" title="{TEAM_NAME}"/-->
 							<ObjectListItem type="Navigation" press="handleListItemPress" title="{TEAM_NAME}" number="{PARENT_TEAM}">
 								<attributes>
