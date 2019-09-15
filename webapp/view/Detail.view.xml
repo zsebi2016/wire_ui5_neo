@@ -16,5 +16,12 @@
 				<ObjectAttribute text="Description: {DESCRIPTION}"/>
 			</attributes>
 		</ObjectHeader>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button text="{i18n>FavoriteButtonText}" type="Accept" icon="sap-icon://accept" press="handleFavorite"/>
+				</contentRight>
+			</Bar>
+		</footer>
 	</Page>
 </mvc:View>
