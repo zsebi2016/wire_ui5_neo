@@ -16,6 +16,9 @@
 				<ObjectAttribute text="Description: {DESCRIPTION}"/>
 			</attributes>
 		</ObjectHeader>
+		<List items="{EXPERTS}">
+			<StandardListItem type="Active" press="handleListItemPress" title="{NAME}"/>
+		</List>
 		<footer>
 			<Bar>
 				<contentRight>
