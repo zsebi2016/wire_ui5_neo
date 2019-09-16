@@ -17,7 +17,12 @@
 			</attributes>
 		</ObjectHeader>
 		<List items="{EXPERTS}">
-			<StandardListItem type="Active" press="handleListItemPress" title="{NAME}"/>
+			<!--StandardListItem type="Active" press="handleListItemPress" title="{NAME}"/-->
+			<ObjectListItem type="Navigation" press="handleListItemPress" title="{NAME}" number="{ID}">
+				<attributes>
+					<ObjectAttribute text="HR ID: {EXT_ID}"/>
+				</attributes>
+			</ObjectListItem>
 		</List>
 		<footer>
 			<Bar>

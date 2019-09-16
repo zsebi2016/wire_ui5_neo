@@ -54,6 +54,24 @@ sap.ui.define([
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			//oRouter.navTo("home"); //maybe not working? home in manifest.json
 			oRouter.navTo("");
+		},
+		
+		//show in a pop-up which list element was pressed
+		handleListItemPress: function (oEvent) {
+			var expertName = oEvent.getSource().getBindingContext().getProperty("NAME");
+			var expertId = oEvent.getSource().getBindingContext().getProperty("ID");
+			var expertExtId = oEvent.getSource().getBindingContext().getProperty("EXT_ID");
+			var expertManager = oEvent.getSource().getBindingContext().getProperty("REPORTS_TO");
+			var skillSet = oEvent.getSource().getBindingContext().getProperty("SKILL_SET");
+			MessageBox.show(
+				"Name: " + expertName + "\n ID: " + expertId + "\n HR ID: " + expertExtId + "\n Manager: " + expertManager 
+				+ "\n Skillset: " + skillSet, 
+				{
+					icon: sap.m.MessageBox.Icon.INFORMATION,
+					title: "Expert Info",
+					actions: [sap.m.MessageBox.Action.OK]
+				}
+			);
 		}
 
 		/**
