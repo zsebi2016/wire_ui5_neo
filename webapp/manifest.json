@@ -93,8 +93,7 @@
 				"clearControlAggregation": false,
 				"bypassed": {
 					"target": "TargetNotFound"
-				},
-				"async": true
+				}
 			},
 			"routes": [{
 				"name": "appHome",
