@@ -90,10 +90,18 @@
 				"viewPath": "sapneo.my.wire.wire_ui5_neo.view",
 				"controlAggregation": "pages",
 				"controlId": "app",
-				"clearControlAggregation": false
+				"clearControlAggregation": false,
+				"bypassed": {
+					"target": "TargetNotFound"
+				},
+				"async": true
 			},
 			"routes": [{
-				"name": "",
+				"name": "appHome",
+				"pattern": "",
+				"target": ["Home"]
+			}, {
+				"name": "TargetView1",
 				"pattern": "",
 				"target": ["TargetView1"]
 			}, {
@@ -110,7 +118,7 @@
 					"clearControlAggregation": false,
 					"viewId": "View1",
 					"viewName": "View1",
-					"viewLevel": 1
+					"viewLevel": 2
 				},
 				"App": {
 					"viewType": "XML",
@@ -119,7 +127,21 @@
 				"Detail": {
 					"viewType": "XML",
 					"viewName": "Detail",
-					"viewLevel": 2
+					"viewLevel": 3
+				},
+				"Home": {
+					"viewType": "XML",
+					"viewName": "Home",
+					"viewLevel": 1
+				},
+				"TargetNotFound": {
+					"viewType": "XML",
+					"viewName": "NotFound",
+					"viewId": "notFound"
+				},
+				"ExpertSearch": {
+					"viewType": "XML",
+					"viewName": "ExpertSearch"
 				}
 			}
 		}

@@ -1,0 +1,16 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="sapneo.my.wire.wire_ui5_neo.controller.Home">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page title="{i18n&gt;homePageTitle}" class="sapUiResponsiveContentPadding">
+					<content>
+						<Button id="displayNotFoundBtn" text="{i18n&gt;DisplayNotFound}" press=".onDisplayNotFound" class="sapUiTinyMarginEnd"/>
+						<Button id="employeeListBtn" text="{i18n&gt;ShowEmployeeList}" press=".onNavToTeams" class="sapUiTinyMarginEnd"/>
+						<Button id="employeeOverviewBtn" text="{i18n&gt;ShowEmployeeOverview}" press=".onNavToEmployeeOverview"/>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
