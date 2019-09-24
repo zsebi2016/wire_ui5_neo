@@ -9,7 +9,7 @@
 			</Page>
 		</pages>
 	</App-->
-	<semantic:SemanticPage id="page" headerPinnable="false" toggleHeaderOnTitleClick="false">
+	<semantic:SemanticPage id="page" headerPinnable="false" toggleHeaderOnTitleClick="false" showNavButton="true" navButtonPress=".onNavBack">
 		<semantic:titleHeading>
 			<Title text="{i18n>worklistTitle}" level="H2"/>
 		</semantic:titleHeading>

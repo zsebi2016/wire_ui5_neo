@@ -78,9 +78,11 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -95,23 +97,43 @@
 					"target": "TargetNotFound"
 				}
 			},
-			"routes": [{
-				"name": "appHome",
-				"pattern": "",
-				"target": ["Home"]
-			}, {
-				"name": "TargetView1",
-				"pattern": "teams",
-				"target": ["TargetView1"]
-			}, {
-				"name": "ExpertSearch",
-				"pattern": "experts",
-				"target": ["ExpertSearch"]
-			}, {
-				"name": "Detail",
-				"pattern": "detail/{teamId}",
-				"target": ["Detail"]
-			}],
+			"routes": [
+				{
+					"name": "appHome",
+					"pattern": "",
+					"target": [
+						"Home"
+					]
+				},
+				{
+					"name": "TargetView1",
+					"pattern": "teams",
+					"target": [
+						"TargetView1"
+					]
+				},
+				{
+					"name": "ExpertSearch",
+					"pattern": "experts",
+					"target": [
+						"ExpertSearch"
+					]
+				},
+				{
+					"name": "Detail",
+					"pattern": "detail/{teamId}",
+					"target": [
+						"Detail"
+					]
+				},
+				{
+					"pattern": "Expert/{objectId}",
+					"name": "ExpertData",
+					"target": [
+						"ExpertData"
+					]
+				}
+			],
 			"targets": {
 				"TargetView1": {
 					"viewType": "XML",
@@ -142,6 +164,10 @@
 					"viewType": "XML",
 					"viewName": "ExpertSearch",
 					"viewLevel": 2
+				},
+				"ExpertData": {
+					"viewType": "XML",
+					"viewName": "ExpertData"
 				}
 			}
 		}

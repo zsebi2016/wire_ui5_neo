@@ -94,10 +94,10 @@ sap.ui.define([
 		 * We navigate back in the browser history
 		 * @public
 		 */
-		onNavBack : function() {
+		/*onNavBack : function() {
 			// eslint-disable-next-line sap-no-history-manipulation
 			history.go(-1);
-		},
+		},*/
 
 
 		onSearch : function (oEvent) {
@@ -140,7 +140,7 @@ sap.ui.define([
 		 * @private
 		 */
 		_showObject : function (oItem) {
-			this.getRouter().navTo("object", {
+			this.getRouter().navTo("ExpertData", {
 				objectId: oItem.getBindingContext().getProperty("ID")
 			});
 		},
