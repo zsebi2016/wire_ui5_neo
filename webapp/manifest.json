@@ -101,7 +101,7 @@
 				"target": ["Home"]
 			}, {
 				"name": "TargetView1",
-				"pattern": "",
+				"pattern": "teams",
 				"target": ["TargetView1"]
 			}, {
 				"name": "Detail",

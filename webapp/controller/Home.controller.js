@@ -18,10 +18,8 @@ sap.ui.define([
 		
 		
 		onNavToTeams: function () {
-			//this.getRouter().navTo("View1");
-			this.getRouter().getTargets().display("TargetView1", {
-				fromTarget: "Home"
-			})
+			this.getRouter().navTo("TargetView1");
+			//this.getRouter().getTargets().display("TargetView1", {fromTarget: "Home"});
 		},
 		
 		

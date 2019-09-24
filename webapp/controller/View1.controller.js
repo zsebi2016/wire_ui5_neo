@@ -1,10 +1,10 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller",
+		"sapneo/my/wire/wire_ui5_neo/controller/BaseController",
 	"sap/m/MessageBox"
-], function (Controller, MessageBox) {
+], function (BaseController, MessageBox) {
 	"use strict";
 
-	return Controller.extend("sapneo.my.wire.wire_ui5_neo.controller.View1", {
+	return BaseController.extend("sapneo.my.wire.wire_ui5_neo.controller.View1", {
 		onInit: function () {
 
 		},
@@ -23,6 +23,18 @@ sap.ui.define([
 			var binding = list.getBinding("items");
 			binding.filter(filters);
 		},
+		
+		/*onNavBack: function () {
+			// in some cases we could display a certain target when the back button is pressed
+			if (this._oData && this._oData.fromTarget) {
+				this.getRouter().getTargets().display(this._oData.fromTarget);
+				delete this._oData.fromTarget;
+				return;
+			}
+
+			// call the parent's onNavBack
+			BaseController.prototype.onNavBack.apply(this, arguments);
+		},*/
 
 		// show in a pop-up which list element was pressed - the starting impl
 		/*handleListItemPress: function (oEvent) {
