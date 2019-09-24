@@ -1,11 +1,11 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller",
+	"sapneo/my/wire/wire_ui5_neo/controller/BaseController",
 	"sap/m/MessageBox",
 	"sap/m/MessageToast"
-], function (Controller, MessageBox, MessageToast) {
+], function (BaseController, MessageBox, MessageToast) {
 	"use strict";
 
-	return Controller.extend("sapneo.my.wire.wire_ui5_neo.controller.Detail", {
+	return BaseController.extend("sapneo.my.wire.wire_ui5_neo.controller.Detail", {
 
 		handleFavorite: function (evt) {
 			// show confirmation dialog
@@ -17,7 +17,7 @@ sap.ui.define([
 						// notify user
 						var successMsg = bundle.getText("FavoriteDialogSuccessMsg");
 						MessageToast.show(successMsg);
-						// TODO call proper service method and update model (not part of this tutorial)
+						// call proper service method and update model (not part of this tutorial)
 					}
 				},
 				bundle.getText("OrderDialogTitle")
@@ -33,6 +33,7 @@ sap.ui.define([
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.getRoute("Detail").attachMatched(this._onRouteMatched, this);
 		},
+		
 		_onRouteMatched: function (oEvent) {
 			var oArgs, oView;
 			oArgs = oEvent.getParameter("arguments");
@@ -50,11 +51,12 @@ sap.ui.define([
 				}
 			});
 		},
-		handleNavButtonPress: function (evt) {
+		
+		/*handleNavButtonPress: function (evt) {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			//oRouter.navTo("home"); //maybe not working? home in manifest.json
 			oRouter.navTo("");
-		},
+		},*/
 		
 		//show in a pop-up which list element was pressed
 		handleListItemPress: function (oEvent) {
