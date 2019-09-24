@@ -7,7 +7,7 @@
 					<content>
 						<Button id="displayNotFoundBtn" text="{i18n&gt;DisplayNotFound}" press=".onDisplayNotFound" class="sapUiTinyMarginEnd"/>
 						<Button id="employeeListBtn" text="{i18n&gt;ShowEmployeeList}" press=".onNavToTeams" class="sapUiTinyMarginEnd"/>
-						<Button id="employeeOverviewBtn" text="{i18n&gt;ShowEmployeeOverview}" press=".onNavToEmployeeOverview"/>
+						<Button id="employeeOverviewBtn" text="{i18n&gt;ShowEmployeeOverview}" press=".onNavToExpertSearch" class="sapUiTinyMarginEnd"/>
 					</content>
 				</Page>
 			</pages>

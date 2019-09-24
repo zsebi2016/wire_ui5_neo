@@ -1,9 +1,9 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function (Controller) {
+	"sapneo/my/wire/wire_ui5_neo/controller/BaseController"
+], function (BaseController) {
 	"use strict";
 
-	return Controller.extend("sapneo.my.wire.wire_ui5_neo.controller.ExpertSearch", {
+	return BaseController.extend("sapneo.my.wire.wire_ui5_neo.controller.ExpertSearch", {
 
 		/**
 		 * Called when a controller is instantiated and its View controls (if available) are already created.
@@ -12,7 +12,7 @@ sap.ui.define([
 		 */
 		onInit: function () {
 
-		},
+		}
 
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

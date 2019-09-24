@@ -23,8 +23,8 @@ sap.ui.define([
 		},
 		
 		
-		onNavToEmployeeOverview: function (oEvent) {
-			this.getRouter().navTo("employeeOverview");
+		onNavToExpertSearch: function () {
+			this.getRouter().navTo("ExpertSearch");
 		}
 
 	});

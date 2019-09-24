@@ -104,6 +104,10 @@
 				"pattern": "teams",
 				"target": ["TargetView1"]
 			}, {
+				"name": "ExpertSearch",
+				"pattern": "experts",
+				"target": ["ExpertSearch"]
+			}, {
 				"name": "Detail",
 				"pattern": "detail/{teamId}",
 				"target": ["Detail"]
@@ -136,7 +140,8 @@
 				},
 				"ExpertSearch": {
 					"viewType": "XML",
-					"viewName": "ExpertSearch"
+					"viewName": "ExpertSearch",
+					"viewLevel": 2
 				}
 			}
 		}
