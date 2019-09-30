@@ -3,7 +3,8 @@
 	xmlns:core="sap.ui.core"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:semantic="sap.f.semantic">
+	xmlns:semantic="sap.f.semantic"
+	xmlns:l="sap.ui.layout" >
 
 	<semantic:SemanticPage
 		id="page"
@@ -20,12 +21,64 @@
 		</semantic:titleHeading>
 
 		<semantic:headerContent>
-			<ObjectNumber
+			<!--ObjectNumber
 				number="{
 					path: 'ID',
 					formatter: '.formatter.numberUnit'
 				}"
-			/>
+			/-->
+			<!--Title
+				text="ID: {ID}"
+				level="H3"/>
+				
+			<Title
+				text="Manager ID: {REPORTS_TO}"
+				level="H3"/>
+				
+			<Title
+				text="ID: {ID}"
+				level="H3"/>
+				
+			<Title
+				text="ID: {ID}"
+				level="H3"/>
+				
+				
+			<Title
+				text="ID: {ID}"
+				level="H3"/>
+				
+				
+			<Title
+				text="Skills: {SKILL_SET}"
+				level="H3"/-->
+		
+		
+					<FlexBox wrap="Wrap">
+						<l:VerticalLayout id="generalDetails" class="sapUiMediumMarginEnd sapUiSmallMarginBottom">
+							<Label text="ID: " design="Bold"/>
+							<Text text="{ID}" class="sapUiMediumMarginBottom"/>
+							<Label text="MANAGER ID: " design="Bold"/>
+							<Text text="{REPORTS_TO}" class="sapUiMediumMarginBottom"/>
+							<Label text="Title: " design="Bold"/>
+							<Text text="{TITLE}" class="sapUiMediumMarginBottom"/>
+							<Label text="Country: " design="Bold"/>
+							<Text text="{COUNTRY}" class="sapUiMediumMarginBottom"/>
+							<Label text="City: " design="Bold"/>
+							<Text text="{CITY}" class="sapUiMediumMarginBottom"/>
+							<Label text="Email:" design="Bold"/>
+							<Text text="{EMAIL}" class="sapUiMediumMarginBottom"/>
+							<Label text="Source: " design="Bold"/>
+							<Text text="{SOURCE}"/>
+							<Label text="Link to HR System: " design="Bold"/>
+							<Text text="https://salesdemo4.successfactors.com/sf/liveprofile?selected_user={ID}" />
+							<Label text="Skill set:" design="Bold"/>
+							<Text text="{SKILL_SET}" class="sapUiMediumMarginBottom"/>
+						</l:VerticalLayout>
+					</FlexBox>
+				
+			
+			
 		</semantic:headerContent>
 
 		<semantic:sendEmailAction>
