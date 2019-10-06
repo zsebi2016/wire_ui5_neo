@@ -10,8 +10,8 @@
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
 		"sourceTemplate": {
-			"id": "servicecatalog.connectivityComponentForManifest",
-			"version": "0.0.0"
+			"id": "sap.ui.ui5-template-plugin.2masterdetail",
+			"version": "1.70.0"
 		},
 		"dataSources": {
 			"ExpertService": {
@@ -40,7 +40,6 @@
 		}
 	},
 	"sap.ui5": {
-		"flexEnabled": false,
 		"rootView": {
 			"viewName": "sapneo.my.wire.wire_ui5_neo.view.App",
 			"type": "XML",
@@ -52,7 +51,11 @@
 			"libs": {
 				"sap.ui.layout": {},
 				"sap.ui.core": {},
-				"sap.m": {}
+				"sap.m": {},
+				"sap.f": {},
+				"sap.uxap": {},
+				"sap.tnt": {},
+				"sap.suite.ui.commons": {}
 			}
 		},
 		"contentDensities": {
@@ -86,13 +89,12 @@
 		},
 		"routing": {
 			"config": {
-				"routerClass": "sap.m.routing.Router",
+				"routerClass": "sap.f.routing.Router",
 				"viewType": "XML",
 				"async": true,
 				"viewPath": "sapneo.my.wire.wire_ui5_neo.view",
-				"controlAggregation": "pages",
-				"controlId": "app",
-				"clearControlAggregation": false,
+				"controlAggregation": "beginColumnPages",
+				"controlId": "layout",
 				"bypassed": {
 					"target": "TargetNotFound"
 				}
@@ -144,6 +146,7 @@
 					"pattern": "team/{objectId}",
 					"name": "TeamDetail",
 					"target": [
+						"TeamMaster",
 						"TeamDetail"
 					]
 				},
@@ -151,6 +154,8 @@
 					"pattern": "expertinfo/{objectId}",
 					"name": "Info",
 					"target": [
+						"TeamMaster",
+						"TeamDetail",
 						"Info"
 					]
 				}
@@ -198,12 +203,13 @@
 				"TeamDetail": {
 					"viewType": "XML",
 					"viewName": "TeamDetail",
-					"viewLevel": 3
+					"viewLevel": 2,
+					"controlAggregation": "midColumnPages"
 				},
 				"Info": {
 					"viewType": "XML",
 					"viewName": "Info",
-					"viewLevel": 4
+					"controlAggregation": "endColumnPages"
 				}
 			}
 		}
