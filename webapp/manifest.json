@@ -168,6 +168,18 @@
 				"ExpertData": {
 					"viewType": "XML",
 					"viewName": "ExpertData"
+				},
+				"TeamMaster": {
+					"viewType": "XML",
+					"viewName": "TeamMaster"
+				},
+				"TeamDetail": {
+					"viewType": "XML",
+					"viewName": "TeamDetail"
+				},
+				"Info": {
+					"viewType": "XML",
+					"viewName": "Info"
 				}
 			}
 		}
