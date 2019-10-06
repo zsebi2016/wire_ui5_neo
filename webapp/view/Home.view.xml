@@ -8,6 +8,7 @@
 						<Button id="displayNotFoundBtn" text="{i18n&gt;DisplayNotFound}" press=".onDisplayNotFound" class="sapUiTinyMarginEnd"/>
 						<Button id="employeeListBtn" text="{i18n&gt;ShowEmployeeList}" press=".onNavToTeams" class="sapUiTinyMarginEnd"/>
 						<Button id="employeeOverviewBtn" text="{i18n&gt;ShowEmployeeOverview}" press=".onNavToExpertSearch" class="sapUiTinyMarginEnd"/>
+						<Button id="teamMasterBtn" text="{i18n&gt;ShowTeamMaster}" press=".onNavToTeamMaster" class="sapUiTinyMarginEnd"/>
 					</content>
 				</Page>
 			</pages>

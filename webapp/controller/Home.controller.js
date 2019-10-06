@@ -25,6 +25,10 @@ sap.ui.define([
 		
 		onNavToExpertSearch: function () {
 			this.getRouter().navTo("ExpertSearch");
+		},
+		
+		onNavToTeamMaster: function () {
+			this.getRouter().navTo("TeamMaster");
 		}
 
 	});

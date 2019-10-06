@@ -132,6 +132,27 @@
 					"target": [
 						"ExpertData"
 					]
+				},
+				{
+					"pattern": "teammaster",
+					"name": "TeamMaster",
+					"target": [
+						"TeamMaster"
+					]
+				},
+				{
+					"pattern": "team/{objectId}",
+					"name": "TeamDetail",
+					"target": [
+						"TeamDetail"
+					]
+				},
+				{
+					"pattern": "expertinfo/{objectId}",
+					"name": "Info",
+					"target": [
+						"Info"
+					]
 				}
 			],
 			"targets": {
@@ -171,15 +192,18 @@
 				},
 				"TeamMaster": {
 					"viewType": "XML",
-					"viewName": "TeamMaster"
+					"viewName": "TeamMaster",
+					"viewLevel": 2
 				},
 				"TeamDetail": {
 					"viewType": "XML",
-					"viewName": "TeamDetail"
+					"viewName": "TeamDetail",
+					"viewLevel": 3
 				},
 				"Info": {
 					"viewType": "XML",
-					"viewName": "Info"
+					"viewName": "Info",
+					"viewLevel": 4
 				}
 			}
 		}

@@ -1,4 +1,20 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="sapneo.my.wire.wire_ui5_neo.controller.App"
-	xmlns:html="http://www.w3.org/1999/xhtml">
-	<App id="app"/>
+<!--mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="sapneo.my.wire.wire_ui5_neo.controller.App"
+	xmlns:html="http://www.w3.org/1999/xhtml"-->
+<mvc:View
+	controllerName="sapneo.my.wire.wire_ui5_neo.controller.App"
+	displayBlock="true"
+	height="100%"
+	xmlns="sap.m"
+	xmlns:f="sap.f"
+	xmlns:mvc="sap.ui.core.mvc">
+	<App
+		id="app"
+		busy="{appView>/busy}"
+		busyIndicatorDelay="{appView>/delay}">
+		<f:FlexibleColumnLayout
+			id="layout"
+			layout="{appView>/layout}"
+			backgroundDesign="Translucent">
+		</f:FlexibleColumnLayout>
+	</App>
 </mvc:View>

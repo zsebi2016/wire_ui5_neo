@@ -1,10 +1,64 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
-	controllerName="sapneo.my.wire.wire_ui5_neo.controller.TeamMaster" xmlns:html="http://www.w3.org/1999/xhtml">
-	<App>
-		<pages>
-			<Page title="Title">
-				<content></content>
-			</Page>
-		</pages>
-	</App>
+<!--mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="sapneo.my.wire.wire_ui5_neo.controller.TeamMaster" xmlns:html="http://www.w3.org/1999/xhtml"-->
+<mvc:View controllerName="sapneo.my.wire.wire_ui5_neo.controller.TeamMaster" xmlns="sap.m" xmlns:semantic="sap.f.semantic" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout" xmlns:f="sap.f">
+	<semantic:SemanticPage id="masterPage" preserveHeaderStateOnScroll="true" toggleHeaderOnTitleClick="false">
+		<!--semantic:titleHeading>
+			<Title
+				id="masterPageTitle"
+				text="{masterView>/title}"
+				level="H2"/>
+		</semantic:titleHeading-->
+		<semantic:titleHeading>
+			<l:HorizontalLayout>
+				<f:Avatar displaySize="L" src="sap-icon://group"/>
+				<l:VerticalLayout class="sapUiSmallMargin">
+					<Title id="masterPageTitle" text="WiRE Team Overview" titleStyle="H1" level="H1"/>
+					<Text text="You name it, we find it!"/>
+				</l:VerticalLayout>
+			</l:HorizontalLayout>
+		</semantic:titleHeading>
+		<semantic:content>
+			<!-- For client side filtering add this to the items attribute: parameters: {operationMode: 'Client'}}" -->
+			<List id="list" width="auto" class="sapFDynamicPageAlignContent"
+				items="{ path: '/V_Team', sorter: { path: 'TEAM_NAME', descending: false }, groupHeaderFactory: '.createGroupHeader' }"
+				busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"
+				mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"
+				updateFinished=".onUpdateFinished" selectionChange=".onSelectionChange">
+				<infoToolbar>
+					<Toolbar active="true" id="filterBar" visible="{masterView>/isFilterBarVisible}" press=".onOpenViewSettings">
+						<Title id="filterBarLabel" text="{masterView>/filterBarLabel}" level="H3"/>
+					</Toolbar>
+				</infoToolbar>
+				<headerToolbar>
+					<OverflowToolbar>
+						<SearchField id="searchField" showRefreshButton="true" tooltip="{i18n>masterSearchTooltip}" search=".onSearch" width="auto">
+							<layoutData>
+								<OverflowToolbarLayoutData minWidth="150px" maxWidth="240px" shrinkable="true" priority="NeverOverflow"/>
+							</layoutData>
+						</SearchField>
+						<ToolbarSpacer/>
+						<Button id="sortButton" press=".onOpenViewSettings" icon="sap-icon://sort" type="Transparent"/>
+						<Button id="filterButton" press=".onOpenViewSettings" icon="sap-icon://filter" type="Transparent"/>
+						<Button id="groupButton" press=".onOpenViewSettings" icon="sap-icon://group-2" type="Transparent"/>
+					</OverflowToolbar>
+				</headerToolbar>
+				<items>
+					<ObjectListItem type="Navigation" press=".onSelectionChange" title="{TEAM_NAME}">
+						<ObjectAttribute text="Team ID: { path: 'ID' }"/>
+						<ObjectAttribute text="Team Lead: { path: 'TEAM_LEAD' }"/>
+						<ObjectAttribute text="Parent Team: {= ${PARENT_TEAM} > (-1) ? ${PARENT_TEAM} : ${i18n>notAvailText} }"/>
+						<firstStatus>
+							<!--ObjectStatus title="{SOURCE}" text="{= ${SOURCE} ==='SF_SD4' ? 'Internal' : ${i18n>notAvailText} }"/-->
+							<ObjectStatus title="" text="{= ${SOURCE} ==='SF_SD4' ? 'Internal' : 'External' }"/>
+						</firstStatus>
+						<markers>
+							<ObjectMarker
+								type="{= ${SOURCE} ==='SF_SD4' ? 'Favorite' : 'Flagged' }"/>
+						</markers>
+					</ObjectListItem>
+				</items>
+			</List>
+		</semantic:content>
+	</semantic:SemanticPage>
 </mvc:View>

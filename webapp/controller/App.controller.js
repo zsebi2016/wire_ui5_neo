@@ -1,18 +1,46 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function (Controller) {
+	"./BaseController",
+	"sap/ui/model/json/JSONModel"
+], function (BaseController, JSONModel) {
 	"use strict";
 
-	return Controller.extend("sapneo.my.wire.wire_ui5_neo.controller.App", {
+	return BaseController.extend("sapneo.my.wire.wire_ui5_neo.controller.App", {
 
 		/**
 		 * Called when a controller is instantiated and its View controls (if available) are already created.
 		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 		 * @memberOf sapneo.my.wire.wire_ui5_neo.view.App
 		 */
-		onInit: function () {
+		onInit : function () {
+			var oViewModel,
+				fnSetAppNotBusy,
+				iOriginalBusyDelay = this.getView().getBusyIndicatorDelay();
 
-		},
+			oViewModel = new JSONModel({
+				busy : true,
+				delay : 0,
+				layout : "OneColumn",
+				previousLayout : "",
+				actionButtonsInfo : {
+					midColumn : {
+						fullScreen : false
+					}
+				}
+			});
+			this.setModel(oViewModel, "appView");
+
+			fnSetAppNotBusy = function() {
+				oViewModel.setProperty("/busy", false);
+				oViewModel.setProperty("/delay", iOriginalBusyDelay);
+			};
+
+			// since then() has no "reject"-path attach to the MetadataFailed-Event to disable the busy indicator in case of an error
+			this.getOwnerComponent().getModel().metadataLoaded().then(fnSetAppNotBusy);
+			this.getOwnerComponent().getModel().attachMetadataFailed(fnSetAppNotBusy);
+
+			// apply content density mode to root view
+			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
+		}
 
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
