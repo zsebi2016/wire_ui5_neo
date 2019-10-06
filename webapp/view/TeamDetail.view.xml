@@ -8,7 +8,7 @@
 		</semantic:titleHeading>
 		<semantic:headerContent>
 			<ObjectAttribute title="{i18n&gt;priceTitle}"/>
-			<ObjectNumber id="objectHeaderNumber" number="{      path: 'TEAM_LEAD',      formatter: '.formatter.currencyValue'     }"/>
+			<ObjectNumber id="objectHeaderNumber" number="{  path: 'TEAM_LEAD'  }"/>
 		</semantic:headerContent>
 		<semantic:content>
 			<Table id="lineItemsList" width="auto" items="{EXPERTS}" mode="SingleSelectMaster"

@@ -2,8 +2,9 @@ sap.ui.define([
 	"./BaseController",
 	"sap/ui/model/json/JSONModel",
 	"../model/formatter",
-	"sap/m/library"
-], function (BaseController, JSONModel, formatter, mobileLibrary) {
+	"sap/m/library",
+	"sap/ui/Device"
+], function (BaseController, JSONModel, formatter, mobileLibrary, Device) {
 	"use strict";
 	// shortcut for sap.m.URLHelper
 	var URLHelper = mobileLibrary.URLHelper;
@@ -70,10 +71,10 @@ sap.ui.define([
 			if (!sObjectId) {
 				return;
 			}
-			if (oEvent.getParameter("name") === "object") {
+			if (oEvent.getParameter("name") === "TeamDetail") {
 				this.getModel("appView").setProperty("/layout", "TwoColumnsMidExpanded");
 			}
-			this.getModel("appView").setProperty("/layout", "TwoColumnsMidExpanded");
+			//this.getModel("appView").setProperty("/layout", "TwoColumnsMidExpanded");
 			this.getModel().metadataLoaded().then(function () {
 				var sObjectPath = this.getModel().createKey("V_Team", {
 					ID: sObjectId
@@ -157,7 +158,7 @@ sap.ui.define([
 			this.getModel("appView").setProperty("/actionButtonsInfo/midColumn/fullScreen", false);
 			// No item should be selected on master after detail page is closed
 			this.getOwnerComponent().oListSelector.clearMasterListSelection();
-			this.getRouter().navTo("master");
+			this.getRouter().navTo("TeamMaster");
 		},
 		/**
 		 * Toggle between full and non full screen mode.
@@ -178,35 +179,12 @@ sap.ui.define([
 		 *@memberOf wire.teams.controller.Detail
 		 */
 		action: function (oEvent) {
-			var that = this;
-			var actionParameters = JSON.parse(oEvent.getSource().data("wiring").replace(/'/g, "\""));
-			var eventType = oEvent.getId();
-			var aTargets = actionParameters[eventType].targets || [];
-			aTargets.forEach(function (oTarget) {
-				var oControl = that.byId(oTarget.id);
-				if (oControl) {
-					var oParams = {};
-					for (var prop in oTarget.parameters) {
-						oParams[prop] = oEvent.getParameter(oTarget.parameters[prop]);
-					}
-					oControl[oTarget.action](oParams);
-				}
-			});
-			var oNavigation = actionParameters[eventType].navigation;
-			if (oNavigation) {
-				var oParams = {};
-				(oNavigation.keys || []).forEach(function (prop) {
-					oParams[prop.name] = encodeURIComponent(JSON.stringify({
-						value: oEvent.getSource().getBindingContext(oNavigation.model).getProperty(prop.name),
-						type: prop.type
-					}));
-				});
-				if (Object.getOwnPropertyNames(oParams).length !== 0) {
-					this.getOwnerComponent().getRouter().navTo(oNavigation.routeName, oParams);
-				} else {
-					this.getOwnerComponent().getRouter().navTo(oNavigation.routeName);
-				}
-			}
+			var bReplace = !Device.system.phone;
+			this.getRouter().navTo("Info", {
+				objectId : (oEvent.getParameter("listItem") || oEvent.getSource()).getBindingContext().getProperty("ID"),
+				itemPosition : (oEvent.getParameter("listItem") || oEvent.getSource()).getBindingContext().getProperty("ID")
+			}, bReplace);
+
 		}
 	});
 });
