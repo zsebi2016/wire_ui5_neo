@@ -2,7 +2,7 @@
 	controllerName="sapneo.my.wire.wire_ui5_neo.controller.TeamDetail" xmlns:html="http://www.w3.org/1999/xhtml"-->
 <mvc:View xmlns="sap.m" xmlns:semantic="sap.f.semantic" xmlns:mvc="sap.ui.core.mvc" controllerName="sapneo.my.wire.wire_ui5_neo.controller.TeamDetail">
 
-	<semantic:SemanticPage id="detailPage" busy="{detailView&gt;/busy}" busyIndicatorDelay="{detailView&gt;/delay}">
+	<semantic:SemanticPage id="detailPage" busy="{detailView&gt;/busy}" busyIndicatorDelay="{detailView&gt;/delay}" showFooter="true">
 		<semantic:titleHeading>
 			<Title text="{TEAM_NAME}" level="H2"/>
 		</semantic:titleHeading>
@@ -12,6 +12,7 @@
 		</semantic:headerContent>
 		<semantic:content>
 			<Table id="lineItemsList" width="auto" items="{EXPERTS}" mode="SingleSelectMaster"
+					sticky="ColumnHeaders,HeaderToolbar"
 					updateFinished=".onListUpdateFinished" 
 					noDataText="{i18n&gt;detailLineItemTableNoDataText}" busyIndicatorDelay="{detailView&gt;/lineItemTableDelay}" selectionChange="action" 
 					xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" action:wiring="\{'selectionChange':\{'navigation':\{'routeName':'Info'\}\}\}">
@@ -53,7 +54,10 @@
 		<semantic:exitFullScreenAction>
 			<semantic:ExitFullScreenAction id="exitFullScreen" visible="{= !${device&gt;/system/phone} &amp;&amp; ${appView&gt;/actionButtonsInfo/midColumn/fullScreen}}" press=".toggleFullScreen"/>
 		</semantic:exitFullScreenAction>
-
+		
+		 <semantic:footerCustomActions> 
+				<Button text="{i18n>TeamDetailFooterFavorite}"/> 
+		</semantic:footerCustomActions> 
 	</semantic:SemanticPage>
 
 </mvc:View>

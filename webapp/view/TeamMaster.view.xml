@@ -24,6 +24,7 @@
 				items="{ path: '/V_Team', sorter: { path: 'TEAM_NAME', descending: false }, groupHeaderFactory: '.createGroupHeader' }"
 				busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"
 				mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"
+				sticky="ColumnHeaders,HeaderToolbar"
 				updateFinished=".onUpdateFinished" selectionChange=".onSelectionChange">
 				<infoToolbar>
 					<Toolbar active="true" id="filterBar" visible="{masterView>/isFilterBarVisible}" press=".onOpenViewSettings">
