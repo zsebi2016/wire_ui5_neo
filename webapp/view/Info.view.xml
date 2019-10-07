@@ -6,8 +6,8 @@
 			<uxap:ObjectPageHeader>
 				<uxap:breadcrumbs>
 					<Breadcrumbs>
-						<Link text='{FIRSTNAME}'/>
-						<Link text='{LASTNAME}'/>
+						<Link text='External ID: {EXT_ID}'/>
+						<Link id="SFLink" text='https://salesdemo4.successfactors.com/sf/liveprofile?selected_user={EXT_ID}}'/>
 					</Breadcrumbs>
 				</uxap:breadcrumbs>
 			</uxap:ObjectPageHeader>
@@ -16,24 +16,47 @@
 			<FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch">
 				<f:Avatar class="sapUiSmallMarginEnd sapUiSmallMarginTop" src="sap-icon://employee" displaySize="L"/>
 				<l:VerticalLayout class="sapUiSmallMarginEnd sapUiSmallMarginTop">
-					<Label text="{i18n>infoItemDescription}"/>
-					<Text text="{SKILL_SET}"/>
+					<Label text="{i18n>infoItemName}"/>
+					<Text text="{NAME}"/>
 				</l:VerticalLayout>
 				<l:VerticalLayout class="sapUiSmallMarginEnd sapUiSmallMarginTop">
-					<Label text="{i18n>infoItemDescriptionLanguage}"/>
-					<Text text="{LANGUAGE}"/>
+					<Label text="{i18n>infoItemCountry}"/>
+					<Text text="{COUNTRY}"/>
+				</l:VerticalLayout>
+				<l:VerticalLayout class="sapUiSmallMarginEnd sapUiSmallMarginTop">
+					<Label text="{i18n>infoItemEmail}"/>
+					<Text text="{EMAIL}"/>
+				</l:VerticalLayout>
+				<l:VerticalLayout class="sapUiSmallMarginEnd sapUiSmallMarginTop">
+					<Label text="{i18n>infoItemID}"/>
+					<Text text="{ID}"/>
 				</l:VerticalLayout>
 			</FlexBox>
 		</uxap:headerContent>
 		<uxap:sections>
-			<uxap:ObjectPageSection title="{i18n>infoItemDeliveryTitle}">
+			<uxap:ObjectPageSection title="{i18n>infoItemDetailsTitle}">
 				<uxap:subSections>
 					<uxap:ObjectPageSubSection>
 						<uxap:blocks>
 							<form:SimpleForm editable="true">
-								<Label text="{i18n>infoItemDeliveryDateDescr}"/>
-								<!--DatePicker dateValue="{DeliveryDate}" displayFormat="long" editable="false"/-->
-								<Text text="{EMAIL}"/>
+								<Label text="{i18n>infoItemFirstName}"/>
+								<Text text="{FIRSTNAME}"/>
+								<Label text="{i18n>infoItemLastName}"/>
+								<Text text="{LASTNAME}"/>
+								<Label text="{i18n>infoItemReportsTo}"/>
+								<Text text="{REPORTS_TO}"/>
+								<Label text="{i18n>infoItemLanguage}"/>
+								<Text text="{LANGUAGE}"/>
+								<Label text="{i18n>infoItemDepartment}"/>
+								<Text text="{DEPARTMENT}"/>
+								<Label text="{i18n>infoItemTitle}"/>
+								<Text text="{TITLE}"/>
+								<Label text="{i18n>infoItemJobCode}"/>
+								<Text text="{JOBCODE}"/>
+								<Label text="{i18n>infoItemDivision}"/>
+								<Text text="{DIVISION}"/>
+								<Label text="{i18n>infoItemDetailsDesc}"/>
+								<Text text="{SKILL_SET}"/>
 							</form:SimpleForm>
 						</uxap:blocks>
 					</uxap:ObjectPageSubSection>
