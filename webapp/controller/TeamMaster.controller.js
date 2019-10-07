@@ -305,7 +305,7 @@ sap.ui.define([
 			// set the layout property of FCL control to show two columns
 			this.getModel("appView").setProperty("/layout", "TwoColumnsMidExpanded");
 			this.getRouter().navTo("TeamDetail", {
-				objectId : oItem.getBindingContext().getProperty("ID")
+				teamId : oItem.getBindingContext().getProperty("ID")
 			}, bReplace);
 		},
 

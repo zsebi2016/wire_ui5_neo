@@ -67,17 +67,17 @@ sap.ui.define([
 		 * @private
 		 */
 		_onObjectMatched: function (oEvent) {
-			var sObjectId = oEvent.getParameter("arguments").objectId;
-			if (!sObjectId) {
+			var sTeamId = oEvent.getParameter("arguments").teamId;
+			if (!sTeamId) {
 				return;
 			}
 			if (oEvent.getParameter("name") === "TeamDetail") {
 				this.getModel("appView").setProperty("/layout", "TwoColumnsMidExpanded");
 			}
-			//this.getModel("appView").setProperty("/layout", "TwoColumnsMidExpanded");
+			this.getModel("appView").setProperty("/layout", "TwoColumnsMidExpanded");
 			this.getModel().metadataLoaded().then(function () {
 				var sObjectPath = this.getModel().createKey("V_Team", {
-					ID: sObjectId
+					ID: sTeamId
 				});
 				this._bindView("/" + sObjectPath);
 			}.bind(this));
@@ -181,8 +181,7 @@ sap.ui.define([
 		action: function (oEvent) {
 			var bReplace = !Device.system.phone;
 			this.getRouter().navTo("Info", {
-				objectId : (oEvent.getParameter("listItem") || oEvent.getSource()).getBindingContext().getProperty("ID"),
-				itemPosition : (oEvent.getParameter("listItem") || oEvent.getSource()).getBindingContext().getProperty("ID")
+				objectId : (oEvent.getParameter("listItem") || oEvent.getSource()).getBindingContext().getProperty("ID")
 			}, bReplace);
 
 		}

@@ -30,10 +30,11 @@
 					</Column>
 				</columns>
 				<items>
-					<ColumnListItem>
+					<ColumnListItem type="Navigation">
+					<!--ColumnListItem  selected="{= ${ID} === ${appView>/selectedKey}}" -->
 						<cells>
 							<ObjectIdentifier title="{NAME}" text="{X_KEY}"/>
-							<ObjectNumber number="{          path: 'REPORTS_TO',          formatter: '.formatter.currencyValue'         }"/>
+							<Text id="ID" text="{ path: 'ID' }"/>
 						</cells>
 					</ColumnListItem>
 				</items>

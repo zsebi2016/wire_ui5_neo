@@ -1,10 +1,44 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="sapneo.my.wire.wire_ui5_neo.controller.Info"
-	xmlns:html="http://www.w3.org/1999/xhtml">
-	<App>
-		<pages>
-			<Page title="{i18n>infoTitle}">
-				<content></content>
-			</Page>
-		</pages>
-	</App>
+<mvc:View controllerName="sapneo.my.wire.wire_ui5_neo.controller.Info" height="100%" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:uxap="sap.uxap" xmlns:f="sap.f" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form">
+	<uxap:ObjectPageLayout id="objectPageLayout" showTitleInHeaderContent="true" alwaysShowContentHeader="false"
+		preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" enableLazyLoading="false">
+		<uxap:headerTitle>
+			<uxap:ObjectPageHeader>
+				<uxap:breadcrumbs>
+					<Breadcrumbs>
+						<Link text='{FIRSTNAME}'/>
+						<Link text='{LASTNAME}'/>
+					</Breadcrumbs>
+				</uxap:breadcrumbs>
+			</uxap:ObjectPageHeader>
+		</uxap:headerTitle>
+		<uxap:headerContent>
+			<FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch">
+				<f:Avatar class="sapUiSmallMarginEnd sapUiSmallMarginTop" src="sap-icon://employee" displaySize="L"/>
+				<l:VerticalLayout class="sapUiSmallMarginEnd sapUiSmallMarginTop">
+					<Label text="{i18n>infoItemDescription}"/>
+					<Text text="{SKILL_SET}"/>
+				</l:VerticalLayout>
+				<l:VerticalLayout class="sapUiSmallMarginEnd sapUiSmallMarginTop">
+					<Label text="{i18n>infoItemDescriptionLanguage}"/>
+					<Text text="{LANGUAGE}"/>
+				</l:VerticalLayout>
+			</FlexBox>
+		</uxap:headerContent>
+		<uxap:sections>
+			<uxap:ObjectPageSection title="{i18n>infoItemDeliveryTitle}">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection>
+						<uxap:blocks>
+							<form:SimpleForm editable="true">
+								<Label text="{i18n>infoItemDeliveryDateDescr}"/>
+								<!--DatePicker dateValue="{DeliveryDate}" displayFormat="long" editable="false"/-->
+								<Text text="{EMAIL}"/>
+							</form:SimpleForm>
+						</uxap:blocks>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+		</uxap:sections>
+	</uxap:ObjectPageLayout>
 </mvc:View>

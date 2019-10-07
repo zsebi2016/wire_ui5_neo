@@ -17,7 +17,16 @@ sap.ui.define([
 		},
 
 		_onInfoMatched: function (oEvent) {
-			this.getModel("appView").setProperty("/layout", "ThreeColumnsMidExpanded");
+			var sObjectId = oEvent.getParameter("arguments").objectId;
+			this.getModel("appView").setProperty("/layout", "ThreeColumnsEndExpanded");
+			this.getModel().metadataLoaded().then(function () {
+				var sObjectPath = this.getModel().createKey("V_Expert", {
+					ID: sObjectId
+				});
+				this.getView().bindElement({
+					path: "/" + sObjectPath
+				});
+			}.bind(this));
 		}
 
 		/**
