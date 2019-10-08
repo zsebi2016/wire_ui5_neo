@@ -30,8 +30,8 @@
 					</Column>
 				</columns>
 				<items>
-					<ColumnListItem type="Navigation">
-					<!--ColumnListItem  selected="{= ${ID} === ${appView>/selectedKey}}" -->
+					<!--ColumnListItem type="Navigation"-->
+					<ColumnListItem  selected="{= ${ID} === ${appView>/selectedKey}}" type="Navigation">
 						<cells>
 							<ObjectIdentifier title="{ID}" text="{NAME}"/>
 							<Text text="{REPORTS_TO}"/>
