@@ -20,10 +20,6 @@
 					<Text text="{NAME}"/>
 				</l:VerticalLayout>
 				<l:VerticalLayout class="sapUiSmallMarginEnd sapUiSmallMarginTop">
-					<Label text="{i18n>infoItemCountry}"/>
-					<Text text="{COUNTRY}"/>
-				</l:VerticalLayout>
-				<l:VerticalLayout class="sapUiSmallMarginEnd sapUiSmallMarginTop">
 					<Label text="{i18n>infoItemEmail}"/>
 					<Text text="{EMAIL}"/>
 				</l:VerticalLayout>
@@ -45,6 +41,10 @@
 								<Text text="{LASTNAME}"/>
 								<Label text="{i18n>infoItemReportsTo}"/>
 								<Text text="{REPORTS_TO}"/>
+								<Label text="{i18n>infoItemCountry}"/>
+								<Text text="{COUNTRY}"/>
+								<Label text="{i18n>infoItemCity}"/>
+								<Text text="{CITY}"/>
 								<Label text="{i18n>infoItemLanguage}"/>
 								<Text text="{LANGUAGE}"/>
 								<Label text="{i18n>infoItemDepartment}"/>
@@ -55,12 +55,8 @@
 								<Text text="{JOBCODE}"/>
 								<Label text="{i18n>infoItemDivision}"/>
 								<Text text="{DIVISION}"/>
-								<Label text="{i18n>infoItemCity}"/>
-								<Text text="{CITY}"/>
 								<Label text="{i18n>infoItemDetailsDesc}"/>
 								<Text text="{SKILL_SET}"/>
-								<Label text="{i18n>infoItemSource}"/>
-								<Text text="{SOURCE}"/>
 							</form:SimpleForm>
 						</uxap:blocks>
 					</uxap:ObjectPageSubSection>
