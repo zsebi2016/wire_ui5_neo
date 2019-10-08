@@ -6,8 +6,8 @@
 			<uxap:ObjectPageHeader>
 				<uxap:breadcrumbs>
 					<Breadcrumbs>
-						<Link text='External ID: {EXT_ID}'/>
-						<Link id="SFLink" text='https://salesdemo4.successfactors.com/sf/liveprofile?selected_user={EXT_ID}}'/>
+						<Link text="{i18n>infoItemExtId}: {EXT_ID}"/>
+						<Link emphasized="true" target="_blank" href="https://salesdemo4.successfactors.com/sf/liveprofile?selected_user={EXT_ID}" text="{i18n>infoItemSFLink}"/>
 					</Breadcrumbs>
 				</uxap:breadcrumbs>
 			</uxap:ObjectPageHeader>
@@ -55,8 +55,12 @@
 								<Text text="{JOBCODE}"/>
 								<Label text="{i18n>infoItemDivision}"/>
 								<Text text="{DIVISION}"/>
+								<Label text="{i18n>infoItemCity}"/>
+								<Text text="{CITY}"/>
 								<Label text="{i18n>infoItemDetailsDesc}"/>
 								<Text text="{SKILL_SET}"/>
+								<Label text="{i18n>infoItemSource}"/>
+								<Text text="{SOURCE}"/>
 							</form:SimpleForm>
 						</uxap:blocks>
 					</uxap:ObjectPageSubSection>
