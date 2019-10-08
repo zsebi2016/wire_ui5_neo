@@ -7,8 +7,8 @@
 			<Title text="{TEAM_NAME}" level="H2"/>
 		</semantic:titleHeading>
 		<semantic:headerContent>
-			<ObjectAttribute title="{i18n&gt;priceTitle}"/>
-			<ObjectNumber id="objectHeaderNumber" number="{  path: 'TEAM_LEAD'  }"/>
+			<ObjectAttribute title="{i18n>descriptionTitle}"/>
+			<ObjectNumber id="objectHeaderNumber" number="{  path: 'DESCRIPTION'  }"/>
 		</semantic:headerContent>
 		<semantic:content>
 			<Table id="lineItemsList" width="auto" items="{EXPERTS}" mode="SingleSelectMaster"
@@ -26,15 +26,15 @@
 						<Text text="{i18n&gt;detailLineItemTableIDColumn}"/>
 					</Column>
 					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
-						<Text text="{i18n&gt;detailLineItemTableUnitNumberColumn}"/>
+						<Text text="{i18n>detailLineItemTableUnitNumberColumn}"/>
 					</Column>
 				</columns>
 				<items>
 					<ColumnListItem type="Navigation">
 					<!--ColumnListItem  selected="{= ${ID} === ${appView>/selectedKey}}" -->
 						<cells>
-							<ObjectIdentifier title="{NAME}" text="{X_KEY}"/>
-							<Text id="ID" text="{ path: 'ID' }"/>
+							<ObjectIdentifier title="{ID}" text="{NAME}"/>
+							<Text text="{REPORTS_TO}"/>
 						</cells>
 					</ColumnListItem>
 				</items>
