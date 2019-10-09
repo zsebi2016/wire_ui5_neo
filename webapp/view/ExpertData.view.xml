@@ -1,91 +1,64 @@
-<mvc:View 
-	controllerName="sapneo.my.wire.wire_ui5_neo.controller.ExpertData" xmlns:html="http://www.w3.org/1999/xhtml"
-	xmlns:core="sap.ui.core"
-	xmlns="sap.m"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:semantic="sap.f.semantic"
-	xmlns:l="sap.ui.layout" >
-
-	<semantic:SemanticPage
-		id="page"
-		headerPinnable="false"
-		toggleHeaderOnTitleClick="false"
-		busy="{objectView>/busy}"
-		busyIndicatorDelay="{objectView>/delay}"
-		showNavButton="true" navButtonPress=".onNavBack">
-
+<mvc:View controllerName="sapneo.my.wire.wire_ui5_neo.controller.ExpertData" 
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:l="sap.ui.layout" xmlns:f="sap.f" xmlns:form="sap.ui.layout.form">
+	<semantic:SemanticPage id="page" headerPinnable="false" toggleHeaderOnTitleClick="false" busy="{objectView>/busy}"
+		busyIndicatorDelay="{objectView>/delay}" showNavButton="true" navButtonPress=".onNavBack">
 		<semantic:titleHeading>
-			<Title
-				text="{NAME}"
-				level="H2"/>
+			<FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch">
+				<f:Avatar class="sapUiSmallMarginEnd sapUiSmallMarginTop" src="sap-icon://employee" displaySize="L"/>
+				<l:VerticalLayout class="sapUiSmallMarginEnd sapUiSmallMarginTop">
+					<Label text="{i18n>infoItemName}"/>
+					<Text text="{NAME}"/>
+				</l:VerticalLayout>
+				<l:VerticalLayout class="sapUiSmallMarginEnd sapUiSmallMarginTop">
+					<Label text="{i18n>infoItemEmail}"/>
+					<Text text="{EMAIL}"/>
+				</l:VerticalLayout>
+				<l:VerticalLayout class="sapUiSmallMarginEnd sapUiSmallMarginTop">
+					<Label text="{i18n>infoItemID}"/>
+					<Text text="{ID}"/>
+				</l:VerticalLayout>
+			</FlexBox>
+			
 		</semantic:titleHeading>
-
 		<semantic:headerContent>
-			<!--ObjectNumber
-				number="{
-					path: 'ID',
-					formatter: '.formatter.numberUnit'
-				}"
-			/-->
-			<!--Title
-				text="ID: {ID}"
-				level="H3"/>
-				
-			<Title
-				text="Manager ID: {REPORTS_TO}"
-				level="H3"/>
-				
-			<Title
-				text="ID: {ID}"
-				level="H3"/>
-				
-			<Title
-				text="ID: {ID}"
-				level="H3"/>
-				
-				
-			<Title
-				text="ID: {ID}"
-				level="H3"/>
-				
-				
-			<Title
-				text="Skills: {SKILL_SET}"
-				level="H3"/-->
 		
-		
-					<FlexBox wrap="Wrap">
-						<l:VerticalLayout id="generalDetails" class="sapUiMediumMarginEnd sapUiSmallMarginBottom">
-							<Label text="ID: " design="Bold"/>
-							<Text text="{ID}" class="sapUiMediumMarginBottom"/>
-							<Label text="MANAGER ID: " design="Bold"/>
-							<Text text="{REPORTS_TO}" class="sapUiMediumMarginBottom"/>
-							<Label text="Title: " design="Bold"/>
-							<Text text="{TITLE}" class="sapUiMediumMarginBottom"/>
-							<Label text="Country: " design="Bold"/>
-							<Text text="{COUNTRY}" class="sapUiMediumMarginBottom"/>
-							<Label text="City: " design="Bold"/>
-							<Text text="{CITY}" class="sapUiMediumMarginBottom"/>
-							<Label text="Email:" design="Bold"/>
-							<Text text="{EMAIL}" class="sapUiMediumMarginBottom"/>
-							<Label text="Source: " design="Bold"/>
-							<Text text="{SOURCE}"/>
-							<Label text="Link to HR System: " design="Bold"/>
-							<Text text="https://salesdemo4.successfactors.com/sf/liveprofile?selected_user={ID}" />
-							<Label text="Skill set:" design="Bold"/>
-							<Text text="{SKILL_SET}" class="sapUiMediumMarginBottom"/>
-						</l:VerticalLayout>
-					</FlexBox>
-				
-			
-			
+			<FlexBox wrap="Wrap">
+				<l:VerticalLayout id="generalDetails" class="sapUiMediumMarginEnd sapUiSmallMarginBottom">
+					<form:SimpleForm  id="form" editable="true" layout="ColumnLayout" title="{i18n>expertDataTitle}" columnsM="2" columnsL="3" columnsXL="3">
+								<Label text="{i18n>infoItemExtId}" design="Bold"/>
+								<Text text="{EXT_ID}"/>
+								<Label text="{SOURCE}" visible="{= ${SOURCE} === 'SF_SD4'}"/>
+								<Link emphasized="true" target="_blank" 
+									href="https://salesdemo4.successfactors.com/sf/liveprofile?selected_user={EXT_ID}" text="{i18n>infoItemSFLink}"/>
+								<Label text="{i18n>infoItemFirstName}"/>
+								<Text text="{FIRSTNAME}"/>
+								<Label text="{i18n>infoItemLastName}"/>
+								<Text text="{LASTNAME}"/>
+								<Label text="{i18n>infoItemReportsTo}"/>
+								<Text text="{REPORTS_TO}"/>
+								<Label text="{i18n>infoItemCountry}"/>
+								<Text text="{COUNTRY}"/>
+								<Label text="{i18n>infoItemCity}"/>
+								<Text text="{CITY}"/>
+								<Label text="{i18n>infoItemLanguage}"/>
+								<Text text="{LANGUAGE}"/>
+								<Label text="{i18n>infoItemDepartment}"/>
+								<Text text="{DEPARTMENT}"/>
+								<Label text="{i18n>infoItemTitle}"/>
+								<Text text="{TITLE}"/>
+								<Label text="{i18n>infoItemJobCode}"/>
+								<Text text="{JOBCODE}"/>
+								<Label text="{i18n>infoItemDivision}"/>
+								<Text text="{DIVISION}"/>
+								<Label text="{i18n>infoItemDetailsDesc}"/>
+								<Text text="{SKILL_SET}"/>
+							</form:SimpleForm>
+				</l:VerticalLayout>
+			</FlexBox>
 		</semantic:headerContent>
-
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
 		</semantic:sendEmailAction>
-
-
 	</semantic:SemanticPage>
-
 </mvc:View>
