@@ -29,7 +29,7 @@
 								<Label text="{i18n>infoItemExtId}" design="Bold"/>
 								<Text text="{EXT_ID}"/>
 								<Label text="{SOURCE}" visible="{= ${SOURCE} === 'SF_SD4'}"/>
-								<Link emphasized="true" target="_blank" 
+								<Link emphasized="true" visible="{= ${SOURCE} === 'SF_SD4'}"  target="_blank" 
 									href="https://salesdemo4.successfactors.com/sf/liveprofile?selected_user={EXT_ID}" text="{i18n>infoItemSFLink}"/>
 								<Label text="{i18n>infoItemFirstName}"/>
 								<Text text="{FIRSTNAME}"/>
