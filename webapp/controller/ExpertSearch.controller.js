@@ -112,7 +112,7 @@ sap.ui.define([
 				var sQuery = oEvent.getParameter("query");
 
 				if (sQuery && sQuery.length > 0) {
-					aTableSearchState = [new Filter("NAME", FilterOperator.Contains, sQuery)];
+					aTableSearchState = [new Filter("SKILL_SET", FilterOperator.Contains, sQuery)];
 				}
 				this._applySearch(aTableSearchState);
 			}

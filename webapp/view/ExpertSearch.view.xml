@@ -33,6 +33,15 @@
 					<Column id="nameColumn">
 						<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
 					</Column>
+					<Column id="countryColumn">
+						<Text text="{i18n>tableCountryColumnTitle}" id="countryColumnTitle"/>
+					</Column>
+					<Column id="sourceColumn">
+						<Text text="{i18n>tableSourceColumnTitle}" id="sourceColumnTitle"/>
+					</Column>
+					<Column id="skillsetColumn">
+						<Text text="{i18n>tableSkillsetColumnTitle}" id="skillsetColumnTitle"/>
+					</Column>
 					<Column id="unitNumberColumn" hAlign="End">
 						<Text text="{i18n>tableUnitNumberColumnTitle}" id="unitNumberColumnTitle"/>
 					</Column>
@@ -41,7 +50,11 @@
 					<ColumnListItem type="Navigation" press=".onPress">
 						<cells>
 							<ObjectIdentifier title="{NAME}"/>
-							<ObjectNumber number="{ path: 'ID', formatter: '.formatter.numberUnit' }"/>
+							<Text text="{COUNTRY}"/>
+							<Text text="{= ${SOURCE} ==='SF_SD4' ? 'Internal' : 'External' }"/>
+							<Text text="{SKILL_SET}"/>
+                            <Text text="{ID}"/>
+							<!--ObjectNumber number="{ path: 'ID'}"/-->
 						</cells>
 					</ColumnListItem>
 				</items>
