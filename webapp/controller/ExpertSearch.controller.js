@@ -110,6 +110,7 @@ sap.ui.define([
 			} else {
 				var aTableSearchState = [];
 				var sQuery = oEvent.getParameter("query");
+				var aQuery = sQuery.split(" ");
 
 				if (sQuery && sQuery.length > 0) {
 					aTableSearchState = [new Filter("SKILL_SET", FilterOperator.Contains, sQuery)];
