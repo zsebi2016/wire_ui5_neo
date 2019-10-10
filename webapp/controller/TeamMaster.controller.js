@@ -112,7 +112,22 @@ sap.ui.define([
 			var sQuery = oEvent.getParameter("query");
 
 			if (sQuery) {
-				this._oListFilterState.aSearch = [new Filter("TEAM_NAME", FilterOperator.Contains, sQuery)];
+				//this._oListFilterState.aSearch = [new Filter("DESCRIPTION", FilterOperator.Contains, sQuery)];
+				var aQuery = sQuery.split(" ");
+
+				var oFilters = [];
+				var i;
+				if (aQuery && aQuery.length > 0) {
+					for (i = 0; i < aQuery.length; i++) {
+						oFilters.push(new Filter("DESCRIPTION", FilterOperator.Contains, aQuery[i]));
+					}
+				}
+				var aTableSearchState = [new Filter({
+					filters: oFilters,
+					and: true,
+				})];
+				this._oListFilterState.aSearch = aTableSearchState;
+
 			} else {
 				this._oListFilterState.aSearch = [];
 			}
