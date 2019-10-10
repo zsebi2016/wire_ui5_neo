@@ -110,11 +110,18 @@ sap.ui.define([
 				var aTableSearchState = [];
 				var sQuery = oEvent.getParameter("query");
 				var aQuery = sQuery.split(" ");
+				
+				var oFilters = [];
+				var i;
+				if (aQuery && aQuery.length > 0) {
+					oFilters.push(new Filter("SKILL_SET", FilterOperator.Contains, aQuery[0]));
+				}
+				
 
 				if (sQuery && sQuery.length > 0) {
 					aTableSearchState = [new Filter("SKILL_SET", FilterOperator.Contains, sQuery)];
 				}
-				this._applySearch(aTableSearchState);
+				this._applySearch(oFilters);
 			}
 
 		},
