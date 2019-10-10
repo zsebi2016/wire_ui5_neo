@@ -110,18 +110,25 @@ sap.ui.define([
 				var aTableSearchState = [];
 				var sQuery = oEvent.getParameter("query");
 				var aQuery = sQuery.split(" ");
-				
+
 				var oFilters = [];
 				var i;
 				if (aQuery && aQuery.length > 0) {
-					oFilters.push(new Filter("SKILL_SET", FilterOperator.Contains, aQuery[0]));
+					//oFilters.push(new Filter("SKILL_SET", FilterOperator.Contains, aQuery[0]));
+					for (i = 0; i < aQuery.length; i++) {
+						oFilters.push(new Filter("SKILL_SET", FilterOperator.Contains, aQuery[i]));
+					}
 				}
-				
 
-				if (sQuery && sQuery.length > 0) {
-					aTableSearchState = [new Filter("SKILL_SET", FilterOperator.Contains, sQuery)];
-				}
-				this._applySearch(oFilters);
+				//if (sQuery && sQuery.length > 0) {
+				//	aTableSearchState = [new Filter("SKILL_SET", FilterOperator.Contains, sQuery)];
+				//}
+				aTableSearchState = [new Filter({
+					filters: oFilters,
+					and: true,
+				})];
+				//this._applySearch(oFilters);
+				this._applySearch(aTableSearchState);
 			}
 
 		},
